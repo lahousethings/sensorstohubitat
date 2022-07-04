@@ -30,10 +30,20 @@ class HomeTest(BaseCase,Keys):
         self.goto("https://cmi027950.cmi.ta.co.at/webi/schema.html#1")
 
         # Set Values as Variables
-        poolcmi = self.get_text("#pos11")[:4]
+        temppoolcmi = self.get_text("#pos11")[:4]
+        tempbasement = self.get_text("#pos31")[:4]
+        temp0outsideveranda = self.get_text("#pos32")[:4]
+        temp0groundfloor = self.get_text("#pos34")[:4]
+        temp1stfloor = self.get_text("#pos33")[:4]
+
 
         # Update Values in Hubitat
-        self.open_url("http://192.168.90.254/apps/api/1241/devices/6964/setTemperature/"+poolcmi+"?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+        self.open_url("http://192.168.90.254/apps/api/1241/devices/6964/setTemperature/"+temppoolcmi+"?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+        self.open_url("http://192.168.90.254/apps/api/1241/devices/7044/setTemperature/"+tempbasement + "?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+        self.open_url("http://192.168.90.254/apps/api/1241/devices/7045/setTemperature/"+temp0outsideveranda + "?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+        self.open_url("http://192.168.90.254/apps/api/1241/devices/7043/setTemperature/" + temp0groundfloor + "?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+        self.open_url("http://192.168.90.254/apps/api/1241/devices/7042/setTemperature/" + temp1stfloor + "?access_token=d1303322-7a9c-474a-a385-b37ef32b2103")
+
 
 
 
